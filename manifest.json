@@ -2,7 +2,7 @@
   "name": "Pig Pro",
   "short_name": "PigPro",
   "description": "App privada con secretos, listas, curiosidades y fotos",
-  "start_url": "índice.html",
+  "start_url": "index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fdf2f8",
