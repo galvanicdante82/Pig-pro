@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,33 +6,158 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pig Pro</title>
   <meta name="theme-color" content="#d147a3"/>
-  <link rel="manifest" href="manifest.json" />
+  <link rel="manifest" href="manifiesto.json" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; }
-    body { background-color: #fdf2f8; color: #333; display: flex; flex-direction: column; height: 100vh; }
-    header { background-color: #d147a3; color: white; padding: 15px; text-align: center; font-size: 24px; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .sync-status { font-size: 12px; text-align: center; padding: 5px; background: #ffebf3; color: #c1468a; }
-    nav { display: flex; background-color: #f8d1e8; justify-content: space-around; padding: 10px 0; font-weight: bold; color: #d147a3; }
-    nav button { background: none; border: none; font-size: 16px; color: #d147a3; padding: 8px 12px; cursor: pointer; }
-    nav button.active { background-color: #d147a3; color: white; border-radius: 20px; }
-    .container { flex: 1; padding: 15px; overflow-y: auto; }
-    .section { display: none; height: 100%; }
-    .section.active { display: block; }
-    .input-group { margin-bottom: 15px; background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    input, textarea, button, .list-input { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
-    button { background-color: #d147a3; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 10px; }
-    button.add-item { background-color: #ff69b4; }
-    ul { list-style: none; }
-    li { background: white; margin-bottom: 10px; padding: 12px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1); }
-    .photo-item { margin-bottom: 15px; }
-    .photo-item img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-top: 8px; }
-    .item-list { margin-top: 20px; }
-    .list-container { margin-top: 10px; }
-    .list-container input { margin-bottom: 5px; }
-    .delete-btn { background-color: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 5px; font-size: 12px; cursor: pointer; margin-left: 10px; }
-    .login-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; }
-    .login-box { width: 100%; max-width: 400px; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+    body {
+      background-color: #fdf2f8;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      background-color: #d147a3;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .sync-status {
+      font-size: 12px;
+      text-align: center;
+      padding: 5px;
+      background: #ffebf3;
+      color: #c1468a;
+    }
+    nav {
+      display: flex;
+      background-color: #f8d1e8;
+      justify-content: space-around;
+      padding: 10px 0;
+      font-weight: bold;
+      color: #d147a3;
+    }
+    nav button {
+      background: none;
+      border: none;
+      font-size: 16px;
+      color: #d147a3;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    nav button.active {
+      background-color: #d147a3;
+      color: white;
+      border-radius: 20px;
+    }
+    .container {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+    .section {
+      display: none;
+      height: 100%;
+    }
+    .section.active {
+      display: block;
+    }
+    .input-group {
+      margin-bottom: 15px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    input, textarea, button, .list-input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #d147a3;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button.add-item {
+      background-color: #ff69b4;
+    }
+    ul {
+      list-style: none;
+    }
+    li {
+      background: white;
+      margin-bottom: 10px;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+    .photo-item {
+      margin-bottom: 15px;
+    }
+    .photo-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-top: 8px;
+    }
+    .item-list {
+      margin-top: 20px;
+    }
+    .list-container {
+      margin-top: 10px;
+    }
+    .list-container input {
+      margin-bottom: 5px;
+    }
+    .delete-btn {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .login-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #fff;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
     .login-box h3 { margin-bottom: 15px; text-align: center; }
   </style>
 </head>
@@ -97,11 +223,12 @@
     </div>
   </div>
 
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
   <script>
-    // 🔥 Firebase config (ya configurado en una base de datos privada)
+    // 🔥 Firebase config (versión de prueba)
     const firebaseConfig = {
       apiKey: "AIzaSyDd6Y7rYVZ4qY8u1e6u7f3i5o6t9u8i9oY",
       authDomain: "pig-pro-demo-4e8b1.firebaseapp.com",
@@ -112,12 +239,14 @@
       appId: "1:10485765321:web:abc123def456"
     };
 
+    // Inicializar Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.database();
     const loginScreen = document.getElementById('loginScreen');
     const app = document.getElementById('app');
 
+    // Verificar si el usuario está logueado
     auth.onAuthStateChanged(user => {
       if (user) {
         loginScreen.style.display = 'none';
@@ -128,6 +257,7 @@
       }
     });
 
+    // Función de login
     function login() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
@@ -135,56 +265,63 @@
         .catch(() => alert('Correo o contraseña incorrectos'));
     }
 
+    // Solo el admin puede escribir
     function puedeEditar() {
       return auth.currentUser && auth.currentUser.email === 'admin@pigpro.com';
     }
 
+    // Cargar datos
     function cargarDatos() {
       document.querySelectorAll('#secreto-form, #perfeccion-form, #curiosidad-form, #foto-form')
         .forEach(f => f.style.display = puedeEditar() ? 'block' : 'none');
 
-      db.ref('secretos').on('value', s => {
-        const c = document.getElementById('lista-secretos'); c.innerHTML = '';
-        s.forEach(ch => {
-          const v = ch.val();
+      db.ref('secretos').on('value', snap => {
+        const cont = document.getElementById('lista-secretos');
+        cont.innerHTML = '';
+        snap.forEach(child => {
+          const val = child.val();
           const li = document.createElement('li');
-          li.innerHTML = `<strong>${v.nombre}</strong><br><small>${v.desc}</small>`;
-          c.appendChild(li);
+          li.innerHTML = `<strong>${val.nombre}</strong><br><small>${val.desc}</small>`;
+          cont.appendChild(li);
         });
       });
 
-      db.ref('perfecciones').on('value', s => {
-        const c = document.getElementById('lista-perfeccion'); c.innerHTML = '';
-        s.forEach(ch => {
-          const v = ch.val();
+      db.ref('perfecciones').on('value', snap => {
+        const cont = document.getElementById('lista-perfeccion');
+        cont.innerHTML = '';
+        snap.forEach(child => {
+          const val = child.val();
           const li = document.createElement('li');
-          li.innerHTML = `<strong>${v.nombre}</strong><ul>${v.lista.map(el => `<li>${el}</li>`).join('')}</ul>`;
-          c.appendChild(li);
+          li.innerHTML = `<strong>${val.nombre}</strong><ul>${val.lista.map(el => `<li>${el}</li>`).join('')}</ul>`;
+          cont.appendChild(li);
         });
       });
 
-      db.ref('curiosidades').on('value', s => {
-        const c = document.getElementById('lista-curiosidades'); c.innerHTML = '';
-        s.forEach(ch => {
-          const v = ch.val();
+      db.ref('curiosidades').on('value', snap => {
+        const cont = document.getElementById('lista-curiosidades');
+        cont.innerHTML = '';
+        snap.forEach(child => {
+          const val = child.val();
           const li = document.createElement('li');
-          li.innerHTML = `<strong>${v.nombre}</strong><br><small>${v.detalle}</small>`;
-          c.appendChild(li);
+          li.innerHTML = `<strong>${val.nombre}</strong><br><small>${val.detalle}</small>`;
+          cont.appendChild(li);
         });
       });
 
-      db.ref('fotos').on('value', s => {
-        const c = document.getElementById('lista-fotos'); c.innerHTML = '';
-        s.forEach(ch => {
-          const v = ch.val();
+      db.ref('fotos').on('value', snap => {
+        const cont = document.getElementById('lista-fotos');
+        cont.innerHTML = '';
+        snap.forEach(child => {
+          const val = child.val();
           const div = document.createElement('div');
           div.className = 'photo-item';
-          div.innerHTML = `<strong>${v.desc || 'Sin descripción'}</strong><br><img src="${v.src}" alt="Foto" />`;
-          c.appendChild(div);
+          div.innerHTML = `<strong>${val.desc || 'Sin descripción'}</strong><br><img src="${val.src}" alt="Foto" />`;
+          cont.appendChild(div);
         });
       });
     }
 
+    // Funciones de agregar
     function agregarSecreto() {
       if (!puedeEditar()) return;
       const n = document.getElementById('secreto-nombre').value.trim();
@@ -240,6 +377,17 @@
         r.readAsDataURL(f.files[0]);
       }
     }
+
+    // Manejo de pestañas
+    document.querySelectorAll('#navbar button').forEach((btn, i) => {
+      const sections = document.querySelectorAll('.section');
+      btn.addEventListener('click', () => {
+        sections.forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('#navbar button').forEach(b => b.classList.remove('active'));
+        sections[i].classList.add('active');
+        btn.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
